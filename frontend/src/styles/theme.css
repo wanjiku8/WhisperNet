@@ -1,0 +1,69 @@
+:root {
+    --bg: #fef8f5;
+    --text: #3a2e2e;
+    --accent: #e6b8c2;
+    --card-bg: #f8f2f7;
+  }
+  
+  [data-theme="dark"] {
+    --bg: #1a1a1a;
+    --text: #f3f3f3;
+    --accent: #b46a7e;
+    --card-bg: #2e2e2e;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: all 0.3s ease;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  textarea, input, select, button {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: inherit;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-toggle {
+    text-align: right;
+    padding: 1rem;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .container {
+      padding: 1rem;
+    }
+  
+    textarea {
+      font-size: 1rem;
+    }
+  }
+  
