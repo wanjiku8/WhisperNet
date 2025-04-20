@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+body {
+  @apply bg-whisper-light dark:bg-whisper-dark transition-colors duration-200;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.font-poetic {
+  font-family: 'Playfair Display', serif;
+}
