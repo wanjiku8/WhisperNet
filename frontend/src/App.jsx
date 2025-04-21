@@ -1,31 +1,35 @@
-import { useState, useEffect } from "react";
-import AuthForm from "./components/AuthForm";
-import SubmitForm from "./components/SubmitForm";
-import AdviceFeed from "./components/AdviceFeed";
-import HugMode from "./components/HugMode";
-import "./styles/theme.css";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  if (!isLoggedIn) return <AuthForm type="login" onAuthSuccess={() => setIsLoggedIn(true)} />;
+  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className="theme-toggle" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-        {theme === "light" ? "🌙" : "🌞"}
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
       </div>
-      <SubmitForm />
-      <AdviceFeed />
-      <HugMode />
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

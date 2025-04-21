@@ -1,22 +1,26 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_cors import CORS
 from flask_jwt_extended import JWTManager
-from .models import db
-from .routes.advice import advice_bp
-from .routes.auth import auth_bp
+from flask_cors import CORS
+from config import Config
 
-def create_app():
+db = SQLAlchemy()
+migrate = Migrate()
+jwt = JWTManager()
+
+def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config.from_object("config.Config")
-
+    app.config.from_object(config_class)
+    
     db.init_app(app)
-    Migrate(app, db)
+    migrate.init_app(app, db)
+    jwt.init_app(app)
     CORS(app)
-    JWTManager(app)
 
-    app.register_blueprint(advice_bp, url_prefix="/api/advice")
-    app.register_blueprint(auth_bp, url_prefix="/api/auth")
-
+    
+    
+    from app.routes.advice import bp as advice_bp
+    app.register_blueprint(advice_bp, url_prefix='/api')
+    
     return app
